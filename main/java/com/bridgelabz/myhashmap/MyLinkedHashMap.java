@@ -44,6 +44,11 @@ public class MyLinkedHashMap<K, V>
 		return this.numberOfBuckets;
 	}
 	
+	/**
+	 * To get a node value by passing key.
+	 * @param key
+	 * @return
+	 */
 	public V get(K key) 
 	{
 		int index = this.getBucketIndex(key);
@@ -89,6 +94,18 @@ public class MyLinkedHashMap<K, V>
 			MyMapNode<K, V> myMapNode = new MyMapNode<>(key, value);
 			myLinkedList.addBottom(myMapNode);
 		}
+	}
+	
+	/**
+	 * Removes a node with a given key
+	 * @param key
+	 */
+	public void removeKey(K key)
+	{
+		int index = this.getBucketIndex(key);
+		MyLinkedList<K> myLinkedList = this.myBucketArray.get(index);
+		myLinkedList.removeNodeWithKey(key);
+		
 	}
 	
 	/**
